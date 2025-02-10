@@ -116,3 +116,10 @@ You can visualize the training results using TensorBoard:
 tensorboard --logdir logs
 ```
 
+## Citation
+Details will be provided once the paper is published.
+
+
+## Acknowledgement
+
+This repository is built upon the [STEGO](https://github.com/mhamilton723/STEGO) repository.
