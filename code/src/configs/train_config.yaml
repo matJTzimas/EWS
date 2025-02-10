@@ -1,0 +1,109 @@
+
+output_root: "../results" # Absolute path to save results
+pytorch_data_dir: "/media/c15924-FastData/dtzimas/EWS" # Absolute path to find or store CityscapeOne (without the name of the dataset) 
+raw_dataset_path: "/media/c15924-data/dtzimas/cityscapes" # Absolute path where the original dataset is stored (e.g. Cityscapes)
+
+
+# if experiment_name = auto it will create automatically based on random_imgs and random_points
+experiment_name: "auto"
+log_dir: "Cityscapes"
+
+
+# Example of how to create your own annotation
+# annotations: {"class": [["./dataset/<image_to_annotate>.png", 669, 452]]}
+
+generate_points: True
+random_imgs: 4
+random_points: 4
+mode: "mean"
+lr: 1e-4
+seed: 14
+
+
+# Loader params
+num_workers: 4
+max_steps: 3000
+batch_size: 16
+
+
+dataset_name: "directory"
+dir_dataset_name: "CityscapesOne"
+dir_dataset_n_classes: 2 # Background icluded 
+category_class: "vehicle" # 
+
+
+has_labels: true
+crop_type: None
+crop_ratio: .5
+res: 224
+loader_crop_type: "None"
+
+# Model Params
+extra_clusters: 0
+use_true_labels: false
+use_recalibrator: false
+model_type: "vit_small"
+arch: "dino"
+use_fit_model: false
+dino_feat_type: "feat"
+projection_type: "nonlinear"
+#projection_type: linear
+dino_patch_size: 8
+granularity: 1
+continuous: true
+dim: 70
+dropout: true
+zero_clamp: true
+vit_dim: 384
+
+pretrained_weights:
+use_salience: false
+stabalize: false
+stop_at_zero: true
+
+# Feature Contrastive params
+pointwise: false
+feature_samples: 11
+neg_samples: 5
+aug_alignment_weight: 0.0
+
+correspondence_weight: 1.0
+pos_intra_weight: 1.0
+class_intra_weight: 1.0
+
+pos_intra_shift: 0.0
+class_intra_shift: 0.0
+
+
+
+
+rec_weight: 0.0
+repulsion_weight: 0.0
+
+# CRF Params
+# CRF Params (optimized example)
+crf_weight: 0.5    # Increase from 0.0 to allow the CRF to influence the result
+alpha: 1.0         # Higher spatial weight to better preserve local structure
+beta: 0.1          # Slightly lower to avoid over-smoothing based on appearance
+gamma: 0.1         # Adjusted to moderate color-based smoothing
+w1: 5.0            # Reduced pairwise term weight to prevent erasing small details
+w2: 2.0            # Reduced secondary pairwise weight
+shift: 0.00        # No shift adjustment
+crf_samples: 1000  # Keeping the same sampling rate
+color_space: "rgb" #
+
+reset_probe_steps:
+
+# Logging params
+n_images: 3
+scalar_log_freq: 10
+checkpoint_freq: 50
+val_freq: 100
+hist_freq: 100
+
+
+hydra:
+  run:
+    dir: "."
+  output_subdir:
+
