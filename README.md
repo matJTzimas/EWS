@@ -3,7 +3,7 @@
 Matthaios Tzimas, Christos Papaioanidis, Vasileios Mygdalis, Ioannis Pitas
 
 <div align="left">
-  <img src="./figs/inference_EWS.png" style="width:65%;"/>
+  <img src="./figs/Figure_2.png" style="width:80%;"/>
 </div><br/>
 
 ## Environment Setup
