@@ -731,14 +731,14 @@ class ContrastiveCorrelationLoss(nn.Module):
             max_class_maps = self.generate_class_maps(class_feats_map, repeat,mode='max')
             mean_class_maps = self.generate_class_maps(class_feats_map, repeat,mode='mean')
 
-            if mtype == 'c':
-                shift = torch.tensor(0.24)
-                shift = shift.cuda()
-            else : 
-                shift = torch.tensor(0.24)
-                shift = shift.cuda()
+            # if mtype == 'c':
+            #     shift = torch.tensor(0.24)
+            #     shift = shift.cuda()
+            # else : 
+            #     shift = torch.tensor(0.24)
+            #     shift = shift.cuda()
 
-            shift = self.shifts.cuda()
+            # shift = self.shifts.cuda()
 
             # shift = torch.zeros(max_class_maps.size())
             # for i in range(max_class_maps.shape[0]):
