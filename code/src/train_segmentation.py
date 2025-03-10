@@ -95,7 +95,7 @@ class LitUnsupervisedSegmenter(pl.LightningModule):
         self.decoder = nn.Conv2d(dim, self.net.n_feats, (1, 1))
 
         self.Ucluster_metrics = UnsupervisedMetrics(
-            "test/DINO+P/", n_classes, cfg.extra_clusters, True)
+            "test/UNSUPERVISED/", n_classes, cfg.extra_clusters, True)
         self.cluster_metrics = UnsupervisedMetrics(
             "test/EWS/", n_classes, cfg.extra_clusters, True)
         self.linear_metrics = UnsupervisedMetrics(
@@ -387,7 +387,7 @@ class LitUnsupervisedSegmenter(pl.LightningModule):
                 ax[1, 0].set_ylabel("GT", fontsize=16)
                 ax[2, 0].set_ylabel("SUPERVISED", fontsize=16)
                 ax[3, 0].set_ylabel("EWS", fontsize=16)
-                ax[4, 0].set_ylabel("DINO+PROTO", fontsize=16)
+                ax[4, 0].set_ylabel("UNSUPERVISED", fontsize=16)
 
                 remove_axes(ax)
                 plt.tight_layout()
@@ -465,17 +465,17 @@ class LitUnsupervisedSegmenter(pl.LightningModule):
                 self.cluster_acc = tb_metrics["test/EWS/Accuracy"]
                 self.stop = 0
 
-            if tb_metrics["test/DINO+P/mIoU"] > self.Ucluster_miou : 
-                self.Ucluster_miou = tb_metrics["test/DINO+P/mIoU"]
-                self.Ucluster_acc = tb_metrics["test/DINO+P/Accuracy"]
+            if tb_metrics["test/UNSUPERVISED/mIoU"] > self.Ucluster_miou : 
+                self.Ucluster_miou = tb_metrics["test/UNSUPERVISED/mIoU"]
+                self.Ucluster_acc = tb_metrics["test/UNSUPERVISED/Accuracy"]
 
             if tb_metrics["test/SUPERVISED/mIoU"] > self.linear_miou : 
                 self.linear_miou = tb_metrics["test/SUPERVISED/mIoU"]
                 self.linear_acc = tb_metrics["test/SUPERVISED/Accuracy"]
 
-            print(f'\nDINO+prototype -> {tb_metrics["test/DINO+P/mIoU"]} || max D+P miou {self.Ucluster_miou}')
+            print(f'\nUNSUPERVISED -> {tb_metrics["test/UNSUPERVISED/mIoU"]} || max D+P miou {self.Ucluster_miou}')
             print(f'EWS -> {tb_metrics["test/EWS/mIoU"]} || max EWS miou {self.cluster_miou}')
-            print(f'Supervised -> {tb_metrics["test/SUPERVISED/mIoU"]} || max SS miou {self.linear_miou}')
+            print(f'SUPERVISED -> {tb_metrics["test/SUPERVISED/mIoU"]} || max SS miou {self.linear_miou}')
 
             self.linear_metrics.reset()
             self.cluster_metrics.reset()
