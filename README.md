@@ -1,5 +1,4 @@
-# Implementation of EWS: Extremely Weakly Supervised Binary Semantic Segmentation via Pixel-Point Guided Supervision
-
+# Implementation of EWS: Extreme Weakly Supervised Binary Semantic Image Segmentation via One-Pixel Supervision
 Matthaios Tzimas, Christos Papaioanidis, Vasileios Mygdalis, Ioannis Pitas
 
 Under submission to Elsevier’s Pattern Recognition journal.
