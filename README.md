@@ -3,7 +3,7 @@ Matthaios Tzimas, Christos Papaioanidis, Vasileios Mygdalis, Ioannis Pitas
 
 Under submission to Elsevier’s Pattern Recognition journal.
 <div align="left">
-  <img src="./figs/Figure_2.png" style="width:80%;"/>
+  <img src="./figs/ews_inference.pdf" style="width:80%;"/>
 </div><br/>
 
 ## Environment Setup
